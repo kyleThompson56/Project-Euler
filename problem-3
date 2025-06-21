@@ -1,0 +1,27 @@
+;largest prime factor of 600851475143
+;divide it by every number going down
+;when we do that, send it to factor check
+;if that is a factor, give the answer
+
+;bad solution, incredibly slow
+
+;to call factor-check, ensure (= i 2)
+
+(define (factor-check x i)
+  ;divide x by i for i = 0; i <= sqrt x; i++
+  ;return 0 for prime
+  ;return 1 for non-prime
+  (if (> i (sqrt x))
+      0
+      (if (= (modulo x i) 0)
+          1
+          (factor-check x (+ i 1)))))
+
+(define (largest-factor num i)
+  (if (= i 1)
+      1
+      (if (and (= (modulo num i) 0) (= (factor-check i 2) 0))
+          i
+          (largest-factor num (- i 1)))))
+(define (factor num)
+  (largest-factor num num))
