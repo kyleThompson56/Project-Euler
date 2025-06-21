@@ -1,0 +1,16 @@
+;find sum of all even fibonacci nums below 4,000,000
+(define (fib a)
+  (if (= a 0)
+      0
+      (if (= a 1)
+          1
+          (+ (fib (- a 1)) (fib (- a 2))))))
+(define (sum)
+  (fib-sum 4000000 0 0))
+(define (fib-sum max sum iter)
+  (let ((num (fib iter)))
+    (if (< max num)
+        sum
+        (if (= (modulo num 2) 0)
+            (fib-sum max (+ sum num) (+ iter 1))
+            (fib-sum max sum (+ iter 1))))))
