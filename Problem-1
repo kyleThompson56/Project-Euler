@@ -1,0 +1,6 @@
+(define (sum-mult-3-5 sum i)
+  (if (= i 0)
+      sum
+      (if (or (= (modulo i 3) 0) (= (modulo i 5) 0))
+          (sum-mult-3-5 (+ sum i) (- i 1))
+          (sum-mult-3-5 sum (- i 1)))))
