@@ -1,0 +1,19 @@
+;sum of squares of first 10 natural numbers
+;and square of the sum
+
+(define (square-sum x sum)
+  (if (= x 0)
+      (* sum sum)
+      (square-sum (- x 1) (+ sum x))))
+
+(define (sum-squares x sum)
+  (if (= x 0)
+      sum
+      (sum-squares (- x 1) (+ sum (* x x)))))
+   
+
+
+(define (problem max)
+  (- (sum-squares max 0) (square-sum max 0)))
+
+(problem (read))
